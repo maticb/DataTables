@@ -5257,7 +5257,8 @@
 	
 		$.each( _fnGetUniqueThs( settings, headerCopy ), function ( i, el ) {
 			idx = _fnVisibleToColumnIndex( settings, i );
-			el.style.width = settings.aoColumns[idx].sWidth;
+			if(idx)
+				el.style.width = settings.aoColumns[idx].sWidth;
 		} );
 	
 		if ( footer ) {
@@ -8452,7 +8453,9 @@
 			col  = cols[ column ],
 			data = settings.aoData,
 			row, cells, i, ien, tr;
-	
+		if('undefined' === typeof col)
+			return;
+			
 		// Get
 		if ( vis === undefined ) {
 			return col.bVisible;
